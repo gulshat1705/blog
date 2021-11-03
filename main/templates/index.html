@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    <h2 class="main_title">WELCOME</h2>
+    <!--GET ELEMENTS FROM CREATE-->
+    {% for article in page %}
+        <div class="publishes"><a href="/comment/{{article.id}}/" class="publish_link">
+            <div class="publish_title_block"><h3 class="publish_title">{{article.title}}</h3></div>
+            <div class="publish_date"><p class="publish_d">{{article.created_date}}</p></div>
+            <div class="publish_pic_block container"><img class="publish_pic" src="{{article.image.url}}" alt="article-img"></div>
+            <div class="short_description"><p class="short_txt">{{article.short_description}}</p></div>
+            {% with comments.count as total_comments %}
+                <p class="comment_counts">Read More >>></p>                
+                <p class="total_comments"> Comments: {{article.comments.count}}</p>
+            {% endwith %}
+        </a></div>
+    {% endfor %}
+     <!---PAGINATION -->   
+    <nav class="pag_nav" aria-label="...">
+        <ul class="pagination">
+        <li class="page-item {% if not page.has_previous %} disabled {% endif %}">
+            <a class="page-link" href="?page=1">
+            First
+            </a>
+        </li>
+        {% if page.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+                <span class="sr-only">Previous</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for element in page.paginator.page_range %} 
+            {% if page.number == element %}
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ n }}">{{ element }}</a>
+                </li>
+            {% elif element > page.number|add:-2 and element < page.number|add:2 %}    
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ element }}">{{ element }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}        
+        {% if page.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">»</span>
+                <span class="sr-only">Next</span>
+                </a>
+            </li>
+            <li class="page-item {% if not page.has_next %} disabled {% endif %}">
+                <a class="page-link" href="{% if page.has_next %} ?page={{ page.paginator.num_pages }}  {% endif %}">
+                Last
+                </a>
+            </li>              
+        {% endif %}
+        </ul>
+    </nav>    
+    <!--END PAGINATION-->    
+{% endblock %}

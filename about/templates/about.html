@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="about_block">
+            <h2 class="about_title">About Cat blog</h2>
+            <img class="about_img" src="{% static 'about/about.jpg' %}" alt="cat blog" width="465" height="287">
+            <div class="about_text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus assumenda dicta 
+                distinctio sequi adipisci repudiandae ut? Suscipit excepturi sit quas, quia, perferendis ipsa, minima 
+                aperiam reiciendis laudantium magnam veritatis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo autem molestiae accusantium cumque, itaque nisi eius ab necessitatibus animi quis hic sunt
+                Massumenda nihil libero obcaecati odit harum placeat fugiat? Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Eveniet numquam eos, excepturi libero odio distinctio sequi adipisci repudiandae ut? Suscipit excepturi sit quas, quia, perferendis ipsa, minima 
+                aperiam reiciendis laudantium magnam veritatis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo autem molestiae accusantium cumque, itaque nisi eius ab necessitatibus animi quis hic sunt 
+                assumenda nihil libero obcaecati odit harum placeat fugiat? Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Eveniet numquam eos, excepturi libero odarchitecto commodi, quae veniam quasi, perspiciatis distinctio aspernatur
+                    a sunt voluptates blanditiis nobis! Rerum, incidunt at?</p> 
+            </div>        
+        </div>  
+        <div class="form_block">
+            <h4>Send your message!</h4>
+            <form class="form_fields" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com" >
+                </div>
+                <div class="form-group">
+                    <label for="f_name">First name</label>
+                    <input name="first_name" type="text" class="form-control" id="f_name" placeholder="John">
+                </div>
+                  <div class="form-group">
+                    <label for="l_name">Last Name</label>
+                    <input name="last_name" type="text" class="form-control" id="l_name" placeholder="Jackson">
+                </div>                    
+                <div class="form-group">
+                  <label for="textarea">Example textarea</label>
+                  <textarea name="message" class="form-control" id="textarea" rows="3" placeholder="message"></textarea>
+                </div>
+                <div class="form-check">
+                    <input name="allow_mailing" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Allow mailling</label>
+                  </div>                
+                <button class="about_btn" type="submit">send</button>
+                <div class="danger-errors">{{ form.non_field_errors }}</div>
+            </form>
+              
+            <!-- <form class="form_fields" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="about_btn" type="submit">send</button>
+            </form> -->
+        </div>
+    </div>    
+{% endblock %}
+

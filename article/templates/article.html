@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Create article
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="create_block">
+            <h3 class="create_title">Create Article</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {{ form }} -->
+                <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter title">
+                {% if form.title.errors%}
+                    <p class="alert alert-danger">{{form.title.errors}}</p>
+                {% endif %}    
+                </div>    
+                <div class="form-group">
+                <label for="exampleFormControlTextarea1">Short description</label>
+                <textarea name="short_description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter description"></textarea>
+                {% if form.short_description.errors%}
+                    <p class="alert alert-danger">{{form.short_description.errors}}</p>
+                {% endif %}                    
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Enter description" placeholder="Enter description"></textarea>
+                    {% if form.description.errors%}
+                        <p class="alert alert-danger">{{form.description.errors}}</p>
+                    {% endif %}                   
+                </div>
+                <div class="form-group">
+                    <label for="formFile" class="form-label">Upload image</label>
+                    <input name="image" class="form-control" type="file" id="formFile">
+                    {% if form.image.errors%}
+                        <p class="alert alert-danger">{{form.image.errors}}</p>
+                    {% endif %}    
+                
+                </div>
+                <button class="about_btn article_btn" type="submit">Submit</button>    
+            </form>
+            <!-- <div>
+                {% if errors %}
+                {% for k, v in errors.items %}
+                <h6>{{k}}</h6>
+
+                {{ v }}
+                {% endfor %}
+                {% endif %}
+            </div>     -->
+        </div> 
+    </div>       
+{% endblock %}
