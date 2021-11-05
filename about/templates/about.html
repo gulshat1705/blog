@@ -26,6 +26,12 @@ About
         </div>  
         <div class="form_block">
             <h4>Send your message!</h4>
+            {% if messages %}
+                {% for message in messages %}
+                    <p {% if message.tags %} class="{{message.tags}} alert alert-success" {% endif %}>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            
             <form class="form_fields" method="POST">
                 {% csrf_token %}
                 <div class="form-group">

@@ -8,6 +8,12 @@ Create article
 {% block content %}
     <div class="container">
         <div class="create_block">
+            {% if messages %}
+                {% for message in messages %}
+                    <p {% if message.tags %} class="{{message.tags}} alert alert-success" {% endif %}>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            
             <h3 class="create_title">Create Article</h3>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from article.forms import ArticleCreateForm
+from django.contrib import messages
+
 # from django.core.exceptions import ValidationError
 # from blog.article.models import Article
 # from article.models import article
@@ -11,6 +13,8 @@ def create(request):
         article_form = ArticleCreateForm(request.POST, request.FILES)
         if article_form.is_valid():
             article_form.save()
+            messages.success(request, 'Your post was created!')        
+
         else:
             return render(request, 'article.html', {'form': article_form, 'error': article_form.errors})   
 

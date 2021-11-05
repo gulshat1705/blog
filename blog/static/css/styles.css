@@ -194,6 +194,7 @@ footer {
 }
 .comment_img{
     display: block;
+    max-width: 400px;
     margin: 0 auto;
     padding: 15px 5px 40px;
 }
@@ -203,9 +204,3 @@ footer {
     font-weight: bold;
     padding-top: 20px;
 }
-/* .alert-primary{
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background:rgb(199, 120, 175) !important;
-} */

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from about.forms import AboutForm
 from about.models import About
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 
 def about(request):
@@ -16,6 +17,8 @@ def about(request):
             about_object = About(email=email, first_name=first_name, last_name=last_name,message=message, allow_mailing=allow_mailing)          
             about_object.save()
             print('Saved')
+
+            messages.success(request, f'{first_name}, your message was sent!')        
        
     form = AboutForm()
     about_data = About.objects.all() #select *from about
