@@ -6,8 +6,8 @@ from comment.forms import FormCreateForm
 
 
 # Create your views here.
-def comment(request, id):
-    article_obj = Article.objects.get(id=id)
+def comment(request):
+    article_obj = Article.objects
     form = FormCreateForm()
     context = {'article': article_obj, 'comment_form': form}
 
