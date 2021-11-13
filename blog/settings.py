@@ -62,20 +62,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
+AUTH_USER_MODEL = 'user.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blog',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432'
+try:
+    from blog.db_settings import DATABASES
+except ImportError:
+    print(''' Databases settings error using default''')    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'blog',
+            'USER': 'postgres',
+            'PASSWORD': '123',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
     }
-}
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 

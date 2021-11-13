@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Create article
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="id_first_name" class="form-label">First name</label>
+                <input type="text" class="form-control" name="first_name" maxlength="50" required_id="id_first_name">    
+            </div>
+            <div class="mb-6">
+                <label for="id_last_name" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="last_name" maxlength="50" required_id="id_last_name">    
+            </div>
+            <div class="mb-6">
+                <label for="id_middle_name" class="form-label">Middle name</label>
+                <input type="text" class="form-control" name="middle_name" maxlength="50" required_id="id_middle_name">    
+            </div>
+            <div class="mb-6">
+            <label for="id_username" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="username" maxlength="255" required_id="id_username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-6">
+            <label for="id_password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required_id="id_password" maxlength="128">
+            </div>
+            <div class="mb-6 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

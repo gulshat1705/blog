@@ -2,7 +2,7 @@
 .idea/workspace.xml
 static/media/
 .vscode/
-
+db_connection
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
